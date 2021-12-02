@@ -130,7 +130,7 @@ LOGGING = {
 }
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['lproperty.herokuapp.com', 'localhost']
 
 
 # Application definition
