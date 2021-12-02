@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 DEFAULT_LOGGING_LEVEL = "DEBUG" if DEBUG else "INFO"
 
@@ -306,6 +306,6 @@ MESSAGE_TAGS = {
 SITE_ID = 1
 
 try:
-    from .production_settings import *
+    from .production_settings_example import *
 except ImportError:
     pass
