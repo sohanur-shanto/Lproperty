@@ -1,0 +1,121 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% include 'core/partials/_showcase_section.html' %}
+
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'index' %}">
+            <i class="fas fa-home"></i> {{ _("Home") }} </a>
+        </li>
+        <li class="breadcrumb-item active">{{ _("About") }}</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<section id="about" class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h2 class="pb-1">{{ _("We are Lproperty and We are awesome") }}</h2>
+        <img src="{% static 'img/about.jpg' %}" alt="">
+        <p class="mt-4">{{ canonical }}
+
+          Lproperty is the only property solutions provider in Bangladesh. We cater to the needs of those seeking real estate services, with a promise to make property search, renting & buying easier than ever. We offer the easiest platform that enables anyone to buy, rent or sell properties in the country.
+
+<br>
+<br>
+          Bproperty is part of the Emerging Markets Property Group which also owns top UAE property portal Bayut (www.bayut.com) and Pakistan’s number one property portal Zameen (www.zameen.com), Mubawab (www.mubawab.ma) in Morocco and the newest acquisition of Bayut’s Saudi Arabia domain (www.bayut.sa) and Bayut’s Jordan domain (www.bayut.jo).
+          Our investors are some of the top names from the global property portal industry, who operate highly successful ventures across the world, such as SeLoger.com, the largest and most successful property portal in France.
+
+      </div>
+      <div class="col-md-3">
+        <div><center>
+          <h3 class="pb-2">{{ _("Honorable CEO") }}</h3></center>
+          <img class="square-pic pb-3" src="{% static 'img/nima.jpg' %}" alt="Marie Smith">
+          <h5 class="text-secondary pb-1">Lproperty</h5>
+          <p>
+            +8801792749888
+            <br>
+            
+ info@lproperty.com
+          </p>
+        </div>
+
+        <hr>
+
+        <div>
+          <style>
+            #exclusivityBadgeContainer {
+              background: url("https://www.asiapropertyawards.com/wp-content/uploads/2018/11/APAS-color.png") no-repeat;
+              background-size: 100%;
+              width: 200px;
+              height: 200px;
+              position: relative;
+            }
+          </style>
+
+         <center> <h3>{{ _("Cooperation") }}</h3></center>
+          <a href="#" target="_blank">
+            <div id="exclusivityBadgeContainer" title="Best In Bangladesh">
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Work -->
+<section id="work" class="bg-dark text-white text-center">
+  <h2 class="display-4 pb-3">{{ _("We Work For You") }}</h2>
+
+  <a href="{% url 'listings' %}" class="btn btn-secondary text-white btn-lg">{{ _("View Our Featured Listings") }}</a>
+</section>
+
+
+{% if realtors %}
+<!-- Team -->
+<section id="team" class="py-5">
+  <div class="container">
+    <h2 class="text-center pb-5">{{ _("Our Team") }}</h2>
+    <div class="row text-center">
+
+      {% for realtor in realtors %}
+
+
+      <div class="{% if realtors.count > 2 %} col-md-4 {% else %} col-md-6 {% endif %}">
+        <img src="{{ realtor.photo.url }}" alt="{{ realtor.name }}" class="rounded-circle-5 mb-3">
+        <h4>{{ realtor.name }}</h4>
+        <p class="text-success">
+          <i class="fas fa-award text-success mb-3"></i> {{ _("Realtor") }}</p>
+        <hr>
+        <p>
+          <i class="fas fa-phone"></i> {{ realtor.phone }}</p>
+        <p>
+          <i class="fas fa-envelope-open"></i> {{ realtor.email }}</p>
+      </div>
+
+      {% endfor %}
+
+
+
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}
